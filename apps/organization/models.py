@@ -46,6 +46,10 @@ class CourseOrg(models.Model):
     class Meta:
         verbose_name = u"课程机构"
         verbose_name_plural = verbose_name
+    
+    def get_teacher_nums(self):
+        #获取机构的教师数
+        return self.teacher_set.all().count()
         
     def __str__(self):
         return self.name
@@ -66,6 +70,7 @@ class Teacher(models.Model):
     points = models.CharField(max_length=50, verbose_name=u"教学特点")
     click_nums = models.IntegerField(default=0, verbose_name=u"点击数")
     fav_nums = models.IntegerField(default=0, verbose_name=u"收藏数")
+    teacher_age = models.IntegerField('年龄',default=25)
     add_time = models.DateTimeField(default=datetime.now, verbose_name=u"添加时间")
     image = models.ImageField(
         default= '',

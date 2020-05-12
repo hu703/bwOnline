@@ -164,7 +164,7 @@
     </div>
 </section>
 {% endblock %}
-
+{% block custom_js %}
 <script>
     $(function () {
         $('#jsStayBtn').on('click', function () {
@@ -173,7 +173,7 @@
                 type: "POST",
                 url: "{% url 'org:add_ask' %}",
                 data: $('#jsStayForm').serialize(),
-                async: true,
+                async: True,
                 success: function (data) {
                     if (data.status == 'success') {
                         $('#jsStayForm')[0].reset();
@@ -186,3 +186,4 @@
         });
     })
 </script>
+{% endblock %}
